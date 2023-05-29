@@ -41,8 +41,8 @@
             "manage-user" : "User system",
             "manage-doctor" : "Manage doctor information",
             "manage-admin" : "Admin Management",
-            "crud" : "CRUD user",
-            "crud-redux" : "Doctor management",
+            "crud" : "List of accounts",
+            "crud-redux" : "Doctor accounts management",
             "manage-clinic" : "Clinic manager",
             "clinic" : "Clinic",
             "specialty" : "Specialized management",
@@ -53,7 +53,7 @@
            
         },
         "doctor" : {
-            "manage-schedule" : "Manage Doctor's Schedule",
+            "manage-schedule" : "Add Doctor's Schedule",
             "manage-patient" : "Manage Doctor's Patient"
         }
     },
@@ -78,7 +78,7 @@
         "popular" : "Popular specialty"
     },
     "manga-schedule" :{
-        "title" : "Manage doctor's examination plan",
+        "title" : "Add doctor's examination plan",
         "choose-doctor" : "Choose doctor",
         "choose-date" : "Choose date",
         "save-info" : "Save info"
@@ -114,6 +114,10 @@
             "price" : "Examination price"
         },
         "specialty" : {
+            "save" :"Save",
+            "edit" :"Edit"
+        },
+        "clinic" : {
             "save" :"Save",
             "edit" :"Edit"
         }

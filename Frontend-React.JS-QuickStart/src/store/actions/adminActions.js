@@ -1,6 +1,6 @@
 import actionTypes from './actionTypes';
 import { toast } from 'react-toastify';
-import { getAllCodeService,createNewUserService,
+import { getAllCodeService,createNewUserService,createNewClinic,editClinicService,
     getAllUsers, deleteUserService, editUserService, editSpecialtyService,
     getDoctorHomeService, getAllDoctors,saveDetailDoctorService, getAllSpecialty, getAllClinic, deleteSpecialtyService,deleteClinicService } from '../../services/userService';
 // export const fetchGenderStart = () => ({
@@ -543,4 +543,70 @@ export const deleteClinicFailed = () => ({
 
 
 ////////////////
+
+export const createNewClinicRedux = (data) => {
+    return async(dispatch,getState) => {
+        try {
+
+            let res = await createNewClinic(data);
+            console.log('check create clinic', res);
+            if(res && res.errCode === 0 ){
+                toast.success("Created clinic successfully")
+                dispatch(saveClinicSuccess()) ;
+                dispatch(fetchClinicStart());
+            }else{
+                toast.error("Fetch all clinic error");
+                dispatch(saveClinicFailed()) ;
+           
+            }
+    
+        }catch(e){
+            toast.error("Fetch all  clinic error");
+            dispatch(saveClinicFailed()) ;
+            console.log('saveClinicFailed', e)
+        }
+    }
+
+}
+
+export const saveClinicSuccess = () => ({
+    type : actionTypes.CREATE_CLINIC_SUCCESS
+})
+export const saveClinicFailed = () => ({
+    type : actionTypes.CREATE_CLINIC_FAILED
+})
+
+
+
+export const editClinic = (data) => {
+    return async(dispatch,getState) => {
+        try {
+
+            let res = await editClinicService(data);
+      
+            if(res && res.errCode === 0 ){
+                toast.success("Update the clinic successfully")
+                dispatch(editClinicSuccess()) ;
+                dispatch(fetchClinicStart());
+            }else{
+                toast.error("Update the clinic error")
+                dispatch(editClinicFailed()) ;
+           
+            }
+    
+        }catch(e){
+            toast.error("Update the clinic error");
+            dispatch(editClinicFailed()) ;
+            console.log('editAllUsersFailed', e)
+        }
+    }
+
+}
+export const editClinicSuccess =  () => ({
+    type: actionTypes.EDIT_CLINIC_SUCCESS,
+})
+
+export const editClinicFailed = () => ({
+    type: actionTypes.EDIT_CLINIC_FAILED
+})
 

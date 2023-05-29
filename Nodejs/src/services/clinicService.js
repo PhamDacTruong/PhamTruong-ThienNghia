@@ -11,6 +11,7 @@ let createClinic = async (data) => {
         !data.descriptionMarkdown ||
         !data.descriptionHTML
       ) {
+        console.log(data)
         resolve({
           errCode: 1,
           errMessage: "Missing parameter",
@@ -111,9 +112,52 @@ let deleteClinic = (clinicId) => {
   })
           
 }
+
+
+let updateClinic = (data) => {
+  return new Promise( async (resolve, reject) => {
+      try{
+          if(!data.id ){
+              resolve({
+                  errCode : 2,
+                  errMessage : 'Missing required parameter'
+              })
+          }
+          let clinic = await db.Clinic.findOne({
+              where : {id : data.id},
+              raw : false
+            });
+            if(clinic){
+           
+              clinic.name = data.name;
+              clinic.address = data.address;
+              clinic.descriptionHTML = data.descriptionHTML;
+              clinic.descriptionMarkdown = data.descriptionMarkdown;
+               if(data.imageBase64){
+                clinic.image = data.imageBase64;
+               }
+              
+              await clinic.save();
+              resolve({
+                  errCode : 0,
+                  message : 'Update the user successfully'
+              })
+            }else{
+              resolve({
+                  errCode : 1,
+                  errMessage : 'User not found'
+              })
+            }
+      }catch(e){
+          reject(e);
+      }
+  })
+          
+}
 module.exports = {
   createClinic: createClinic,
   getAllClinic: getAllClinic,
   getDetailClinicById: getDetailClinicById,
-  deleteClinic : deleteClinic
+  deleteClinic : deleteClinic,
+  updateClinic : updateClinic
 };

@@ -62,7 +62,7 @@ let initWebRoutes = (app) => {
 
      router.put('/api/edit-specialty',specialtyController.handleEditSpecialty);
 
-
+     router.put('/api/edit-clinic',clinicController.handleEditClinic);
      router.post('/api/send-remedy',doctorController.sendRemedy);
     return app.use("/", router);
 }

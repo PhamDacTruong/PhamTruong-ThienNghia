@@ -5,6 +5,7 @@ let createSpecialty = async (data) => {
     return new Promise( async (resolve, reject) => {
         try{
             if(!data.name || !data.imageBase64 || !data.descriptionMarkdown || !data.descriptionHTML ){
+               
                 resolve({
                     errCode : 1,
                     errMessage : 'Missing parameter'
@@ -141,7 +142,7 @@ let deleteSpecialty = (specialtyId) => {
 let updateSpecialty = (data) => {
     return new Promise( async (resolve, reject) => {
         try{
-            if(!data.id){
+            if(!data.id ){
                 resolve({
                     errCode : 2,
                     errMessage : 'Missing required parameter'

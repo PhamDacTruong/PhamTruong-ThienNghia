@@ -34,7 +34,7 @@ class ManageSpecialty extends Component {
   async componentDidUpdate(prevProps, prevState, snapshot) {
     if (prevProps.listSpecialty !== this.props.listSpecialty) {
       this.setState({
-        action  : CRUD_ACTIONS.CREATE,
+          action  : CRUD_ACTIONS.CREATE,
           name : '',
           imageBase64 : '',
           descriptionHTML :'',

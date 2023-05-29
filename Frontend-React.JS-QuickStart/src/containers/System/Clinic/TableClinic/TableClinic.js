@@ -26,6 +26,9 @@ class TableClinic extends Component {
   handleDeleteClinic = (clinic) => {
     this.props.deleteClinicRedux(clinic.id)
   }
+  handleEditClinic = (clinic) => {
+    this.props.handleEditClinicFromParent(clinic)
+  }
   render() {
     let arrClinic = this.state.ClinicRedux
     return (
@@ -42,7 +45,7 @@ class TableClinic extends Component {
                     <tr key = {index}>
                     <td>{item.name}</td>
                     <td>
-                      <button className="btn-edit">
+                      <button className="btn-edit" onClick={() => this.handleEditClinic(item)}>
                         <i className="fas fa-edit"></i>
                       </button>
                       <button className="btn-delete" onClick={() => this.handleDeleteClinic(item)}>
