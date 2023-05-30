@@ -1,6 +1,6 @@
 import actionTypes from './actionTypes';
 import { toast } from 'react-toastify';
-import { getAllCodeService,createNewUserService,createNewClinic,editClinicService,
+import { getAllCodeService,createNewUserService,createNewClinic,editClinicService,createNewSpecialty,
     getAllUsers, deleteUserService, editUserService, editSpecialtyService,
     getDoctorHomeService, getAllDoctors,saveDetailDoctorService, getAllSpecialty, getAllClinic, deleteSpecialtyService,deleteClinicService } from '../../services/userService';
 // export const fetchGenderStart = () => ({
@@ -404,9 +404,40 @@ export const fetchAllSpecialtySuccess =  (data) => ({
 export const fetchAllSpecialtyFailed = () => ({
     type: actionTypes.FETCH_ALL_SPECIALTY_FAILED
 })
+////////////////
+export const createNewSpecialtyRedux = (data) => {
+    return async(dispatch,getState) => {
+        try {
 
+            let res = await createNewSpecialty(data);
+            console.log('check create clinic', res);
+            if(res && res.errCode === 0 ){
+                toast.success("Created specialty successfully")
+                dispatch(saveSpecialtySuccess()) ;
+                dispatch(fetchSpecialtyStart());
+            }else{
+                toast.error("Fetch all specialty error");
+                dispatch(saveSpecialtyFailed()) ;
+           
+            }
+    
+        }catch(e){
+            toast.error("Fetch all  specialty error");
+            dispatch(saveSpecialtyFailed()) ;
+            console.log('saveSpecialtyFailed', e)
+        }
+    }
 
+}
 
+export const saveSpecialtySuccess = () => ({
+    type : actionTypes.CREATE_SPECIALTY_SUCCESS
+})
+export const saveSpecialtyFailed = () => ({
+    type : actionTypes.CREATE_SPECIALTY_FAILED
+})
+
+///////////
 export const deleteSpecialty = (specialtyId) => {
     return async(dispatch,getState) => {
         try {
