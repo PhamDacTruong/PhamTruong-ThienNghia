@@ -3,10 +3,9 @@ import { connect } from "react-redux";
 import { FormattedMessage } from "react-intl";
 import "./ManageSchedule.scss";
 import Select from "react-select";
-import { CRUD_ACTIONS, LANGUAGES, dateFormat} from "../../../utils";
+import {LANGUAGES} from "../../../utils";
 import DatePicker from '../../../components/Input/DatePicker'
 import * as actions from "../../../store/actions";
-import moment from "moment";
 import { toast } from "react-toastify";
 import _ from "lodash";
 import { saveBulkScheduleDoctor } from "../../../services/userService"

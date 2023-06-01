@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import { connect } from "react-redux";
 import { FormattedMessage } from "react-intl";
 import "./BookingModal.scss";
-import { Button, Modal, ModalHeader, ModalBody, ModalFooter } from "reactstrap";
+import {Modal} from "reactstrap";
 import ProfileDoctor from "../ProfileDoctor";
 import _ from "lodash";
 import DatePicker from "../../../../components/Input/DatePicker";
@@ -88,6 +88,8 @@ class BookingModal extends Component {
     this.setState({ selectedGender : selectedOption })
   }
   handleConfirmBooking = async() => {
+    
+
     let date = new Date(this.state.birthday).getTime();
     let timeString = this.buildTimeBooking(this.props.dataTime)
     let doctorName = this.buildDoctorName(this.props.dataTime)
@@ -114,6 +116,8 @@ class BookingModal extends Component {
     }else {
       toast.error('Booking a new appointment error')
     }
+
+   
   }
   buildTimeBooking = (dataTime) => {
     let { language } = this.props;

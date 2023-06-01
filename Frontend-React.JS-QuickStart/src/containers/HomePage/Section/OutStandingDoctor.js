@@ -32,6 +32,7 @@ class OutStandingDoctor extends Component {
   render() {
     let {language} = this.props;
     let arrDoctors = this.state.arrDoctors
+    console.log('checkaa',arrDoctors)
     // arrDoctors = arrDoctors.concat(arrDoctors).concat(arrDoctors)
     return (
       <div className="section-share section-outstanding-doctor">
@@ -63,7 +64,7 @@ class OutStandingDoctor extends Component {
     
                       <div className="position text-center">
                         <div>{ language === LANGUAGES.VI ? nameVi : nameEn}</div>
-                        <div>Cơ xương khớp</div>
+
                       </div>
                     </div>
                   </div>

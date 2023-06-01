@@ -61,7 +61,8 @@ class ManagePatient extends Component {
       patientId : item.patientId,
       email  : item.patientData.email,
       timeType : item.timeType,
-      patientName : item.patientData.firstName
+      patientName : item.patientData.firstName,
+      date : item.date,
     }
     this.setState({
       isOpenRemedyModal : true,
@@ -76,6 +77,7 @@ class ManagePatient extends Component {
   }
   sendRemedy = async(dataChild) => {
     let { dataModal } = this.state;
+    console.log(dataModal)
     this.setState({
       isShowLoading : true
     })
@@ -86,7 +88,8 @@ class ManagePatient extends Component {
         patientId : dataModal.patientId,
         timeType : dataModal.timeType,
         language : this.props.language,
-        patientName : dataModal.patientName
+        patientName : dataModal.patientName,
+        date : dataModal.date,
     })
     if(res && res.errCode === 0){
       this.setState({
@@ -140,14 +143,16 @@ class ManagePatient extends Component {
                 </tr>
                 {dataPatient && dataPatient.length > 0 ?
                 dataPatient.map((item, index) => {
-                  let time = language === LANGUAGES.VI ? item.timeTypeDataPatient.valueVi  : item.timeTypeDataPatient.valueEn;
-                  let gender = language === LANGUAGES.VI ? item.patientData.genderData.valueVi  : item.patientData.genderData.valueEn;
+                  let time = language === LANGUAGES.VI ? (item.timeTypeDataPatient && item.timeTypeDataPatient.valueVi) : (item.timeTypeDataPatient && item.timeTypeDataPatient.valueEn);
+                  let gender = language === LANGUAGES.VI ? (item.patientData && item.patientData.genderData && item.patientData.genderData.valueVi) : (item.patientData && item.patientData.genderData && item.patientData.genderData.valueEn);
+                  let firstName = item.patientData && item.patientData.firstName;
+                  let address = item.patientData && item.patientData.address;
                   return (
                     <tr key = {index}>
                     <td>{index + 1}</td>
-                    <td >{time}</td>
-                    <td>{item.patientData.firstName}</td>
-                    <td>{item.patientData.address}</td>
+                    <td>{time}</td>
+                    <td>{firstName}</td>
+                    <td>{address}</td>
                     <td>{gender}</td>
                     <td>
                         <button className="btn-confirm" onClick={() => this.handleBtnConfirm(item)}>Xác nhận</button>

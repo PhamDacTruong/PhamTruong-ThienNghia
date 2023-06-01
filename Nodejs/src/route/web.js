@@ -64,6 +64,10 @@ let initWebRoutes = (app) => {
 
      router.put('/api/edit-clinic',clinicController.handleEditClinic);
      router.post('/api/send-remedy',doctorController.sendRemedy);
+
+
+
+     
     return app.use("/", router);
 }
 

@@ -437,7 +437,7 @@ let sendRemedy = (data) => {
             }else{
                 let appointment = await db.Booking.findOne({
                     where : {
-                     
+                        
                         doctorId : data.doctorId,
                         patientId : data.patientId,
                         timeType : data.timeType,
@@ -445,9 +445,9 @@ let sendRemedy = (data) => {
                     },
                     raw : false
                 })
-                if(appointment){
+                if(appointment && appointment.doctorId === data.doctorId && appointment.patientId === data.patientId && appointment.timeType.toString() === data.timeType && appointment.date === data.date ){
                     appointment.statusId = 'S3';
-                    await appointment.save()
+                    await appointment.save();
                 }
 
                 await emailService.sendAttachment(data)
@@ -455,6 +455,17 @@ let sendRemedy = (data) => {
                     errCode: 0,
                     errMessage : 'ok'
                 })
+
+
+                if (appointment && appointment.statusId === 'S3') {
+                    await db.Booking.destroy({
+                        where: {
+                            statusId: 'S3'
+                            // patientId: data.patientId
+                        }
+                    });
+                }
+
             }
         }catch(e){
             reject(e);
@@ -462,6 +473,12 @@ let sendRemedy = (data) => {
     })
             
 }
+
+
+
+
+
+
 
 module.exports = {
     getTopDoctorHome : getTopDoctorHome,
@@ -473,5 +490,22 @@ module.exports = {
     getExtraInforDoctorBy : getExtraInforDoctorBy,
     getProfileDoctorById : getProfileDoctorById,
     getListPatientForDoctor : getListPatientForDoctor,
-    sendRemedy : sendRemedy
+    sendRemedy : sendRemedy,
+    
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

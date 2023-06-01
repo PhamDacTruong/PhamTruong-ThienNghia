@@ -57,7 +57,7 @@ class VerifyEmail extends Component {
                 <div className="info-booking">Xác nhận lịch hẹn thành công</div>
               ) : (
                 <div className="info-booking">
-                  Lịch hẹn không tồn tại hoặc đã được xác nhận
+                    LỊCH NÀY HIỆN ĐÃ CÓ NGƯỜI ĐẶT HOẶC BẠN CÓ LỊCH KHÁM CHƯA ĐƯỢC XÁC NHẬN VỚI BÁC SĨ ĐÃ ĐẶT
                 </div>
               )}
             </div>

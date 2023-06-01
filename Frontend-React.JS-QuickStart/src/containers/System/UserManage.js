@@ -120,12 +120,12 @@ class UserManage extends Component {
          editUser = {this.doEditUser}
         />
       }
-        <div className="title text-center">Manage users with Eric</div>
+        <div className="title text-center">Thông tin tài khoản</div>
         <div className="mx-1">
           <button 
             className="btn btn-primary px-3"
             onClick={() => this.handleAddNewUser()}
-            ><i class="fas fa-plus"></i>Add new users</button>
+            ><i class="fas fa-plus"></i>Thêm</button>
         </div>
         <div className="users-table mt-3 mx-1">
           <table id="customers">

@@ -366,7 +366,8 @@ class UserRedux extends Component {
                 >
                   {roles &&
                     roles.length > 0 &&
-                    roles.map((item, index) => {
+                    roles.filter(item => ['R1', 'R2'].includes(item.keyMap))
+                    .map((item, index) => {
                       return (
                         <option key={index} value={item.keyMap}>
                           {language === LANGUAGES.VI

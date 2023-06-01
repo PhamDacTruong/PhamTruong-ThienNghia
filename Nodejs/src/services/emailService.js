@@ -31,7 +31,7 @@ let getBodyEmail = (dataSend) => {
     <div><b>Bác sĩ : ${dataSend.doctorName}</b></div>
 
 
-    <p>Đã xác nhận lại lịch hẹn, vui lòng click vào đường link ở bên dưới để xác nhận và hoàn tất thủ tục đặt lịch khám bệnh</p>
+    <p>Để kiểm tra lịch hẹn, vui lòng click vào đường link ở bên dưới để xác nhận tình trạng của lịch hẹn</p>
     <div>
     <a href = ${dataSend.redirectLink} target = "_blank">Click here</a>
     </div>

@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { push } from "connected-react-router";
-
 import * as actions from "../../store/actions";
 import './Login.scss';
 import { FormattedMessage } from 'react-intl';
@@ -41,7 +40,7 @@ class Login extends Component {
             }
             if(data && data.errCode ===0){
                 this.props.userLoginSuccess(data.user)
-                console.log('login successful')
+                
             }
             
         }catch(error){
@@ -52,8 +51,7 @@ class Login extends Component {
                     })
                 }
             }
-            console.log('hoidanit',error.response);
-            // this.setState({errMessage : e.message})
+          
         }
        
     }

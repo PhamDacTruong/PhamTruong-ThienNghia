@@ -3,9 +3,7 @@ import { FormattedMessage } from "react-intl";
 import "./TableSpecialty.scss";
 import { connect } from "react-redux";
 import * as actions from "../../../../store/actions";
-import { deleteSpecialtyService } from "../../../../services/userService";
-import MarkdownIt from "markdown-it";
-import MdEditor from "react-markdown-editor-lite";
+
 // import style manually
 import "react-markdown-editor-lite/lib/index.css";
 

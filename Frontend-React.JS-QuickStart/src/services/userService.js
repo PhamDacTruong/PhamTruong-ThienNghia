@@ -119,6 +119,9 @@ const postSendRemedy = (data) =>{
     return axios.post(`/api/send-remedy`,data);
 }
 
+
+
+
 export {handleLoginApi,getAllUsers,createNewUserService,
     deleteUserService,editUserService,getAllCodeService,
      getDoctorHomeService,getAllDoctors,saveDetailDoctorService,
