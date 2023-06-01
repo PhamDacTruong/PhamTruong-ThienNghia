@@ -63,7 +63,7 @@ let postBookAppoinment = (data) => {
         if (user && user[0]) {
             const existingBooking = await db.Booking.findOne({
               where: {
-                patientId: { [Op.not]: user[0].id },
+                patientId: user[0].id ,
                 date: data.date,
                 doctorId: data.doctorId,
               }
