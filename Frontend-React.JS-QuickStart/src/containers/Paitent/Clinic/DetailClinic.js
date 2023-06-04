@@ -65,7 +65,7 @@ class DetailClinic extends Component {
           <div className="description-specialty">
             {dataDetailClinic && !_.isEmpty(dataDetailClinic) && 
             <>
-            <div>{dataDetailClinic.name}</div>
+            <h1>{dataDetailClinic.name}</h1>
               <div
                 dangerouslySetInnerHTML={{
                   __html: dataDetailClinic.descriptionHTML,
@@ -77,6 +77,8 @@ class DetailClinic extends Component {
           {arrDoctorId &&
             arrDoctorId.length > 0 &&
             arrDoctorId.map((item, index) => {
+              
+             
               return (
                 <div className="each-doctor" key={index}>
                   <div className="dt-content-left">

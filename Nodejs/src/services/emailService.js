@@ -29,7 +29,8 @@ let getBodyEmail = (dataSend) => {
     <p>Thông tin đặt lịch khám bệnh</p>
     <div><b>Thời gian : ${dataSend.time}</b></div>
     <div><b>Bác sĩ : ${dataSend.doctorName}</b></div>
-
+    <div><b>Địa chỉ khám: ${dataSend.doctorInfo}</b></div>
+    <div><b>Lý do khám bệnh: ${dataSend.reason}</b></div>
 
     <p>Để kiểm tra lịch hẹn, vui lòng click vào đường link ở bên dưới để xác nhận tình trạng của lịch hẹn</p>
     <div>
@@ -47,7 +48,7 @@ let getBodyEmail = (dataSend) => {
     <p>Information to book a medical appointment</p>
     <div><b>Time : ${dataSend.time}</b></div>
     <div><b>Doctor : ${dataSend.doctorName}</b></div>
-
+    
 
     <p>To reconfirm your appointment, please click on the link below to confirm and complete the booking procedure.</p>
     <div>
@@ -65,7 +66,10 @@ let getBodyEmailRemedy = (dataSend) => {
   if (dataSend.language === "vi") {
     result = `
     <h3>Xin chào ${dataSend.patientName}!</h3>
-    <p>Bạn nhận được mail này vì bạn đã đặt lịch khám bệnh online trên trang của chúng tôi thành công</p>
+    <p>Bạn nhận được mail này vì bạn đã đặt lịch khám bệnh và đã khám bệnh xong vui lòng thanh toán</p>
+    <div><b>Bác sĩ : ${dataSend.fullName}</b></div>
+    <div><b>Thời gian : ${dataSend.time}</b></div>
+    <div><b>Địa chỉ khám: ${dataSend.address}</b></div>
     <p>Thông tin đơn thuốc/ hóa đơn được gửi thông file đính kèm</p>
     
    

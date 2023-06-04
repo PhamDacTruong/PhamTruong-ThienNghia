@@ -116,9 +116,9 @@ class ManageSchedule extends Component {
     });
 
   if(res && res.errCode === 0){
-    toast.success('Save Infor Success');
+    toast.success('Tạo lịch khám bệnh thành công');
   }else {
-    toast.error('Save Infor Failed');
+    toast.error('Tạo lịch khám bệnh thất bại');
   }
     
  

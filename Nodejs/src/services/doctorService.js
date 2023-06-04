@@ -17,6 +17,9 @@ let getTopDoctorHome = (limitInput) => {
                     include : [
                         {model : db.Allcode , as : 'positionData', attributes : ['valueEn','valueVi']},
                         {model : db.Allcode , as : 'genderData', attributes : ['valueEn','valueVi']},
+
+
+                        // {model : db.Specialty , as : 'specialty', attributes : ['name']},
                     ],
                     raw : true,
                     nest : true
@@ -272,6 +275,10 @@ let getScheduleByDate = (doctorId, date) => {
                     include : [
                         {model : db.Allcode , as : 'timeTypeData', attributes : ['valueEn','valueVi']},
                         {model : db.User , as : 'doctorData', attributes : ['firstName','lastName']},
+
+                        {model : db.Doctor_Infor , as : 'doctorInfo', attributes : ['addressClinic']},
+
+                        // {model : db.Booking , as : 'scheduleBookings', attributes : ['timeType']},
                     ],
                     raw : false,
                     nest : true
@@ -314,6 +321,10 @@ let getExtraInforDoctorBy = (idInput) => {
                         {model : db.Allcode , as : 'priceTypeData', attributes : ['valueEn','valueVi']},
                         {model : db.Allcode , as : 'provinceTypeData', attributes : ['valueEn','valueVi']},
                         {model : db.Allcode , as : 'paymentTypeData', attributes : ['valueEn','valueVi']},
+
+                        {model : db.Specialty , as : 'SpecialtyInfo', attributes : ['name']},
+
+                        //  {model : db.User , as : 'UserInfo', attributes : ['roleId']},
                     ],
                     raw : false, 
                     nest : true
@@ -401,14 +412,18 @@ let getListPatientForDoctor = (doctorId, date) => {
                     },
                     include : [
                         {
-                            model : db.User,as : 'patientData' , attributes  : ['email','firstName','address','gender'],
+                            model : db.User,as : 'patientData' , attributes  : ['email','firstName','address','gender','phoneNumber','lastName'],
                             include : [
                                 {model : db.Allcode , as : 'genderData', attributes : ['valueEn','valueVi']},
                             ]
                         },
                         {
                             model : db.Allcode , as : 'timeTypeDataPatient', attributes : ['valueEn','valueVi'],
-                        }
+                        },
+                        {
+                            model : db.Doctor_Infor , as : 'doctorInfo1', attributes : ['addressClinic'],
+                        },
+                        {model : db.User , as : 'patientData1', attributes : ['firstName','lastName']},
                     ],
                     raw : false, 
                     nest : true

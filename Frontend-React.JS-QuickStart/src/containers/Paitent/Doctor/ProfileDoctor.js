@@ -74,7 +74,33 @@ class ProfileDoctor extends Component {
       nameVi = `${dataProfile.positionData.valueVi},  ${dataProfile.lastName} ${dataProfile.firstName}`;
       nameEn = `${dataProfile.positionData.valueEn},  ${dataProfile.firstName} ${dataProfile.lastName}`;
     }
-   
+    if (dataProfile && dataProfile.roleId === "R0") {
+      const inactiveDoctorMessage = (
+        <div className="inactive-doctor-container">
+        <div className="inactive-doctor-intro">
+          <div
+            className="inactive-doctor-content-left"
+            style={{
+              backgroundImage: `url(${
+                dataProfile && dataProfile.image ? dataProfile.image : ""
+              })`,
+            }}
+          ></div>
+          <div className="inactive-doctor-content-right">
+            <div className="inactive-doctor-up">
+              {language === LANGUAGES.VI ? nameVi : nameEn}
+            </div>
+            <div className="inactive-doctor-message">
+              Bác sĩ này hiện đang tạm dừng hoạt động. Xin vui lòng chọn bác sĩ khác.
+            </div>
+          </div>
+        </div>
+      </div>
+      );
+  
+      return inactiveDoctorMessage;
+    }
+    
     return (
       <div className="profile-doctor-container">
         <div className="intro-doctor">
@@ -138,6 +164,7 @@ class ProfileDoctor extends Component {
       </div>
       
     );
+    
   }
 }
 

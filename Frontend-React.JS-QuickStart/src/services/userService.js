@@ -121,6 +121,9 @@ const postSendRemedy = (data) =>{
 
 
 
+const updateRoleId = (userId) => {
+    return axios.put(`/api/update-role`,userId)
+}
 
 export {handleLoginApi,getAllUsers,createNewUserService,
     deleteUserService,editUserService,getAllCodeService,
@@ -128,4 +131,4 @@ export {handleLoginApi,getAllUsers,createNewUserService,
     getDetailInfoDoctor,saveBulkScheduleDoctor,getScheduleDoctorByDate,getExtraInforDoctorBy, 
     getProfileDoctorDoctorById,postPatientBookAppointment, VerifyBookAppointment, createNewSpecialty,getAllSpecialty,
     getAllDetailSpecialtyById, createNewClinic, getAllClinic, getAllDetailClinicById, getAllPatientForDoctor, deleteSpecialtyService,
-    editSpecialtyService, postSendRemedy, deleteClinicService,editClinicService}
+    editSpecialtyService, postSendRemedy, deleteClinicService,editClinicService,updateRoleId}

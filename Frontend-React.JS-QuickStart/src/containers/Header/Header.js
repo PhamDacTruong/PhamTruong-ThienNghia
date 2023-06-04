@@ -30,6 +30,9 @@ class Header extends Component {
             if(role===USER_ROLE.DOCTOR){
                 menu = doctorMenu;
             }
+            if(role===USER_ROLE.DISABLE){
+                menu = doctorMenu;
+            }
         }
         this.setState({
             menuApp : menu

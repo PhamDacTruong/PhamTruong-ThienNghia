@@ -103,7 +103,7 @@ export const createNewUser = (data) => {
             let res = await createNewUserService(data);
       
             if(res && res.errCode === 0 ){
-                toast.success("Created new user successfully")
+                toast.success("Tạo người dùng thành công")
                 dispatch(saveUserSuccess()) ;
                 dispatch(fetchAllUsersStart());
             }else{
@@ -165,7 +165,7 @@ export const deleteNewUser = (userId) => {
             let res = await deleteUserService(userId);
       
             if(res && res.errCode === 0 ){
-                toast.success("Delete user successfully")
+                toast.success("Xóa người dùng thành công")
                 dispatch(deleteUsersSuccess()) ;
                 dispatch(fetchAllUsersStart());
             }else{
@@ -199,7 +199,7 @@ export const editNewUser = (data) => {
             let res = await editUserService(data);
       
             if(res && res.errCode === 0 ){
-                toast.success("Update the user successfully")
+                toast.success("Cập nhập người dùng thành công")
                 dispatch(editUsersSuccess()) ;
                 dispatch(fetchAllUsersStart());
             }else{
@@ -281,20 +281,20 @@ export const saveDetailDoctor = (data) =>{
         try {
             let res = await saveDetailDoctorService(data);
             if(res && res.errCode === 0){
-                toast.success("Save info doctor successfully")
+                toast.success("Lưu bác sĩ thành công")
                 dispatch({
                     type : actionTypes.SAVE_DETAIL_DOCTOR_SUCCESS,
            
                 })
             }else{
                 console.log('SAVE_DETAIL_DOCTOR_FAILED : ',res)
-                toast.error("Save info doctor failed")
+                toast.error("Lưu bác sĩ thất bại")
                 dispatch({
                         type : actionTypes.SAVE_DETAIL_DOCTOR_FAILED,
                 })
             }
         }catch(e){
-            toast.error("Save info doctor failed")
+            toast.error("Lưu bác sĩ thành công")
             console.log('SAVE_DETAIL_DOCTOR_FAILED : ',e)
             dispatch({
                 type : actionTypes.SAVE_DETAIL_DOCTOR_FAILED,
@@ -410,7 +410,6 @@ export const createNewSpecialtyRedux = (data) => {
         try {
 
             let res = await createNewSpecialty(data);
-            console.log('check create clinic', res);
             if(res && res.errCode === 0 ){
                 toast.success("Created specialty successfully")
                 dispatch(saveSpecialtySuccess()) ;
@@ -445,7 +444,7 @@ export const deleteSpecialty = (specialtyId) => {
             let res = await deleteSpecialtyService(specialtyId);
       
             if(res && res.errCode === 0 ){
-                toast.success("Delete user successfully")
+                toast.success("Delete specialty successfully")
                 dispatch(deleteSpecialtySuccess()) ;
                 dispatch(fetchSpecialtyStart());
             }else{
@@ -479,17 +478,17 @@ export const editSpecialty = (data) => {
             let res = await editSpecialtyService(data);
       
             if(res && res.errCode === 0 ){
-                toast.success("Update the specialty successfully")
+                toast.success("Cập nhập chuyên khoa thành công")
                 dispatch(editSpecialtySuccess()) ;
                 dispatch(fetchSpecialtyStart());
             }else{
-                toast.error("Update the specialty error")
+                toast.error("Cập nhập chuyên khoa thất bại")
                 dispatch(editSpecialtyFailed()) ;
            
             }
     
         }catch(e){
-            toast.error("Update the specialty error");
+            toast.error("Cập nhập chuyên khoa thất bại");
             dispatch(editSpecialtyFailed()) ;
             console.log('editAllUsersFailed', e)
         }
@@ -545,7 +544,7 @@ export const deleteClinic = (clinicId) => {
             let res = await deleteClinicService(clinicId);
       
             if(res && res.errCode === 0 ){
-                toast.success("Delete clinic successfully")
+                toast.success("Xóa phòng khám thành công")
                 dispatch(deleteClinicSuccess()) ;
                 dispatch(fetchClinicStart());
             }else{
@@ -582,7 +581,7 @@ export const createNewClinicRedux = (data) => {
             let res = await createNewClinic(data);
             console.log('check create clinic', res);
             if(res && res.errCode === 0 ){
-                toast.success("Created clinic successfully")
+                toast.success("Tạo phòng khám thành công")
                 dispatch(saveClinicSuccess()) ;
                 dispatch(fetchClinicStart());
             }else{
@@ -592,7 +591,7 @@ export const createNewClinicRedux = (data) => {
             }
     
         }catch(e){
-            toast.error("Fetch all  clinic error");
+            toast.error("Tạo phòng khám thất bại");
             dispatch(saveClinicFailed()) ;
             console.log('saveClinicFailed', e)
         }
@@ -616,7 +615,7 @@ export const editClinic = (data) => {
             let res = await editClinicService(data);
       
             if(res && res.errCode === 0 ){
-                toast.success("Update the clinic successfully")
+                toast.success("Cập nhập phòng khám thành công")
                 dispatch(editClinicSuccess()) ;
                 dispatch(fetchClinicStart());
             }else{
@@ -640,4 +639,6 @@ export const editClinicSuccess =  () => ({
 export const editClinicFailed = () => ({
     type: actionTypes.EDIT_CLINIC_FAILED
 })
+
+
 

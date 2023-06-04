@@ -93,7 +93,7 @@ class BookingModal extends Component {
     let date = new Date(this.state.birthday).getTime();
     let timeString = this.buildTimeBooking(this.props.dataTime)
     let doctorName = this.buildDoctorName(this.props.dataTime)
- 
+    let doctorInfo = this.buildDoctorInfo(this.props.dataTime)
     let res = await postPatientBookAppointment({
       fullName: this.state.fullName,
       phoneNumber: this.state.phoneNumber,
@@ -107,14 +107,16 @@ class BookingModal extends Component {
       timeType : this.state.timeType,
       language : this.props.language,
       timeString  : timeString,
-      doctorName : doctorName
+      doctorName : doctorName,
+      doctorInfo : doctorInfo
     })
+    
 
     if(res && res.errCode === 0){
-      toast.success('Booking a new appointment successfully')
+      toast.success('Đặt lịch khám thành công vui lòng kiểm tra email')
       this.props.closeBookingModal();
     }else {
-      toast.error('Booking a new appointment error')
+      toast.error('Đặt lịch khám thất bại')
     }
 
    
@@ -147,6 +149,13 @@ class BookingModal extends Component {
       return name
     }
     return ''
+  }
+
+  buildDoctorInfo = (dataTime) => {
+    if (dataTime && !_.isEmpty(dataTime) && dataTime.doctorInfo) {
+      return `${dataTime.doctorInfo.addressClinic}`;
+    }
+    return '';
   }
   render() {
     let { isOpenModal, closeBookingModal, dataTime } = this.props;

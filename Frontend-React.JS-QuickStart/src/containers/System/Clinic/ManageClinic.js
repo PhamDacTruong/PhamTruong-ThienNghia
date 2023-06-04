@@ -121,13 +121,23 @@ class ManageClinic extends Component {
       <div className="manage-clinic-container">
         <div className="ms-title">Quản lí phòng khám</div>
         <div className="add-new-clinic row">
-          <div className="col-6 form-group">
+          <div className="col-5 form-group">
             <label>Tên phòng khám</label>
             <input
               type="text"
               className="form-control"
               value={this.state.name}
               onChange={(event) => this.handleChangeInput(event, "name")}
+            />
+          </div>
+          
+          <div className="col-5 form-group">
+            <label>Địa chỉ phòng khám</label>
+            <input
+              type="text"
+              className="form-control"
+              value={this.state.address}
+              onChange={(event) => this.handleChangeInput(event, "address")}
             />
           </div>
           <div className="col-6 form-group">
@@ -151,15 +161,6 @@ class ManageClinic extends Component {
                 onClick={() => this.openPreviewImage()}
               ></div>
             </div>
-          </div>
-          <div className="col-6 form-group">
-            <label>Địa chỉ phòng khám</label>
-            <input
-              type="text"
-              className="form-control"
-              value={this.state.address}
-              onChange={(event) => this.handleChangeInput(event, "address")}
-            />
           </div>
           <div className="col-12">
             <MdEditor

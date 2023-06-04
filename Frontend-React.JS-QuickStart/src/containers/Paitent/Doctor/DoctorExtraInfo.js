@@ -47,10 +47,12 @@ class DoctorExtraInfo extends Component {
   render() {
     let { isShowDetailInfo, exTraInfor } = this.state;
     let { language } = this.props;
+    
     return (
       <div className="doctor-extra-container">
         <div className="content-up">
           <div className="text-address"><FormattedMessage id = "patient.extra-infor-doctor.address-patient"/></div>
+         
           <div className="name-clinic">
             {exTraInfor && exTraInfor.nameClinic ? exTraInfor.nameClinic : ""}
           </div>
@@ -58,6 +60,9 @@ class DoctorExtraInfo extends Component {
             {exTraInfor && exTraInfor.addressClinic
               ? exTraInfor.addressClinic
               : ""}
+          </div>
+          <div className="name-clinic">
+          Chuyên khoa: {exTraInfor && exTraInfor.SpecialtyInfo && exTraInfor.SpecialtyInfo.name ? exTraInfor.SpecialtyInfo.name : ""}
           </div>
         </div>
         <div className="content-down">

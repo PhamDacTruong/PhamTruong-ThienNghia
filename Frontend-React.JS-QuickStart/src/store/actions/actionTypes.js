@@ -78,6 +78,10 @@ const actionTypes = Object.freeze({
     EDIT_CLINIC_SUCCESS : 'EDIT_CLINIC_SUCCESS',
     EDIT_CLINIC_FAILED : 'EDIT_CLINIC_FAILED',
 
+
+    UPDATE_ROLE_SUCCESS : 'UPDATE_ROLE_SUCCESS',
+    UPDATE_ROLE_FAILED : 'UPDATE_ROLE_FAILED',
+
 })
 
 export default actionTypes;

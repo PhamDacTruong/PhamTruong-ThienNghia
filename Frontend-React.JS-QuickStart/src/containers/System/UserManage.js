@@ -121,36 +121,41 @@ class UserManage extends Component {
         />
       }
         <div className="title text-center">Thông tin tài khoản</div>
-        <div className="mx-1">
+        {/* <div className="mx-1">
           <button 
             className="btn btn-primary px-3"
             onClick={() => this.handleAddNewUser()}
             ><i class="fas fa-plus"></i>Thêm</button>
-        </div>
+        </div> */}
         <div className="users-table mt-3 mx-1">
           <table id="customers">
             <tbody>
             <tr>
               <th>Email</th>
-              <th>First Name</th>
-              <th>Last Name</th>
-              <th>Address</th>
-              <th>Actions</th>
+              <th>Họ</th>
+              <th>Tên</th>
+              <th>Vai trò</th>
+             
             </tr>
             
                 {arrUsers && arrUsers.map((item,index) => {
+                   let role = '';
+                   if (item.roleId === 'R1') {
+                     role = 'Admin';
+                   } else {
+                     role = 'Bác sĩ';
+                   }
+                    if (item.roleId !== 'R3') {
                    return(
                   <tr key = {index}>
                         <td>{item.email}</td>
                         <td>{item.firstName}</td>
                         <td>{item.lastName}</td>
-                        <td>{item.address}</td>
-                        <td>
-                            <button className="btn-edit" onClick={() => this.handleEditUser(item)}><i className="fas fa-edit"></i></button>
-                            <button className="btn-delete" onClick={() => this.handleDeleteUser(item)}><i className="fas fa-trash-alt"></i></button>
-                        </td>
+                        <td>{role}</td>
+                       
                     </tr>
                    )
+                    }
                 })
                 }
               

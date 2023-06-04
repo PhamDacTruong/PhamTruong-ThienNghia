@@ -144,7 +144,9 @@ let deleteUser = (userId) => {
                 errMessage : 'The user is not exist'
             })
         }
-       
+        await db.Doctor_Infor.destroy({
+            where: { doctorId: userId},
+          });
         await db.User.destroy({
             where : {id : userId}
         })
@@ -241,5 +243,6 @@ module.exports = {
     deleteUser : deleteUser,
     updateUserData : updateUserData,
     getAllCodeService : getAllCodeService,
+   
     
 }

@@ -27,6 +27,7 @@ class TableManageUser extends Component {
     this.state = {
       usersRedux : [],
       
+      
     };
   }
 
@@ -42,29 +43,45 @@ class TableManageUser extends Component {
     }
   }
   handleDeleteUser = (user) =>  {
+    
     this.props.deleteNewUserRedux(user.id);
+    
   }
   handleEditUser = (user) => {
     this.props.handleEditUserFormParentKey(user)
   }
   render() {
+   
 
     let arrUsers = this.state.usersRedux;
+    arrUsers.sort((a, b) => {
+      if (a.roleId === 'R0' && b.roleId !== 'R0') {
+        return 1; // Đẩy dòng có roleId 'R0' xuống cuối
+      }
+      if (a.roleId !== 'R0' && b.roleId === 'R0') {
+        return -1; // Đẩy dòng có roleId 'R0' xuống cuối
+      }
+      return 0;
+    });
     return (
       <React.Fragment>
           <table id = "TableManageUser">
             <tbody>
             <tr>
               <th>Email</th>
-              <th>First Name</th>
-              <th>Last Name</th>
-              <th>Address</th>
-              <th>Actions</th>
+              <th>Họ</th>
+              <th>Tên</th>
+              <th>Địa chỉ</th>
+              <th>Hành động</th>
             </tr>    
             {arrUsers && arrUsers.length > 0 &&
                 arrUsers.map((item,index) =>  {
+                  console.log(item)
+                  const rowStyle = item.roleId === 'R0' ? { backgroundColor: '#888' } : {};
+                  if (item.roleId !== 'R3') {
+                    
                   return (
-                    <tr key={index}>
+                    <tr key={index} style={rowStyle}>
                     <td>{item.email}</td>
                     <td>{item.firstName}</td>
                     <td>{item.lastName}</td>
@@ -75,13 +92,14 @@ class TableManageUser extends Component {
                     </td>
                 </tr>     
                   )
+                  }
                 })
               }
                            
           </tbody>
           </table>
     
-      <MdEditor style={{ height: '500px' }} renderHTML={text => mdParser.render(text)} onChange={handleEditorChange} />
+      {/* <MdEditor style={{ height: '500px' }} renderHTML={text => mdParser.render(text)} onChange={handleEditorChange} /> */}
       </React.Fragment>
     );
   }
@@ -98,6 +116,8 @@ const mapDispatchToProps = (dispatch) => {
   return {
     fetchUserRedux: () => dispatch(actions.fetchAllUsersStart()),
     deleteNewUserRedux: (id) => dispatch(actions.deleteNewUser(id)),
+
+   
   };
 };
 
