@@ -130,7 +130,11 @@ class DoctorSchedule extends Component {
     //  let { allDays, allAvalableTimes, isOpenModalBooking, dataScheduleTimeModal, disabledButtons} =this.state
      let { allDays, allAvalableTimes, isOpenModalBooking, dataScheduleTimeModal } =this.state
      let { language } = this.props;
-       
+     if (dataScheduleTimeModal && dataScheduleTimeModal.doctorData && dataScheduleTimeModal.doctorData.roleId === "R0") {
+        return <h5>Bác sĩ tạm ngưng hoạt động không thể đặt lịch</h5>;
+      }
+    
+     
         return (
             <>
           <div className="doctor-schedule-container">
@@ -138,6 +142,7 @@ class DoctorSchedule extends Component {
                <select onChange={(event) => this.handleOnChangeSelect(event)}>
                 {allDays && allDays.length > 0 && allDays.map((item, index) =>{
                     return (
+                        
                         <option value={item.value} key = {index}>{item.label}</option>
                     )
                 })}
@@ -153,6 +158,7 @@ class DoctorSchedule extends Component {
                     <>
                     <div className="time-content-btn">
                     {allAvalableTimes.map((item, index) => {
+                        
                         let timeDisplay = language === LANGUAGES.VI ? item.timeTypeData.valueVi : item.timeTypeData.valueEn;
                         // let isDisabled = disabledButtons.includes(item.id);
                         return (

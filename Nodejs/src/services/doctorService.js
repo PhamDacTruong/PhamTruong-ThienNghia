@@ -179,7 +179,8 @@ let getDetailDoctorById = (inputId) => {
                     {model : db.Allcode , as : 'positionData', attributes : ['valueEn','valueVi']},
                     {model : db.Doctor_Infor, 
                         attributes : {
-                            exclude : ['id','doctorId']
+                            exclude : ['id','doctorId'],
+                            
                         },
                         include : [
                             {model : db.Allcode , as : 'priceTypeData', attributes : ['valueEn','valueVi']},
@@ -274,7 +275,7 @@ let getScheduleByDate = (doctorId, date) => {
                     },
                     include : [
                         {model : db.Allcode , as : 'timeTypeData', attributes : ['valueEn','valueVi']},
-                        {model : db.User , as : 'doctorData', attributes : ['firstName','lastName']},
+                        {model : db.User , as : 'doctorData', attributes : ['firstName','lastName','roleId']},
 
                         {model : db.Doctor_Infor , as : 'doctorInfo', attributes : ['addressClinic']},
 
@@ -324,7 +325,7 @@ let getExtraInforDoctorBy = (idInput) => {
 
                         {model : db.Specialty , as : 'SpecialtyInfo', attributes : ['name']},
 
-                        //  {model : db.User , as : 'UserInfo', attributes : ['roleId']},
+                        {model : db.User, attributes : ['roleId']},
                     ],
                     raw : false, 
                     nest : true
